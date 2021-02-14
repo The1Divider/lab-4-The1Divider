@@ -1,8 +1,10 @@
 boolean mouseControl;
 boolean selection = false;
+Spaceship spaceship;
 
 void setup() {
   size(1000, 1000);
+  spaceship = new Spaceship("SpaceShip", width, height);
 }
 // Planets:
 // load 3-5 images + manipulate for 'different' planets
@@ -26,7 +28,6 @@ void draw() {
   if (!selection) {
     controlSelection();
   } else {
-    Spaceship spaceship = new Spaceship("SpaceShip", width, height);
     spaceship.display();
   }
 }

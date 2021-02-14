@@ -3,6 +3,7 @@ class Spaceship extends Sprite {
   Spaceship(String name, int x, int y) {
     setPos(x, y);
     setName(name);
+    setSprite();
   }
   
   void update(int xDir, int yDir) {
