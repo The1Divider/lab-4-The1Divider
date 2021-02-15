@@ -1,4 +1,4 @@
-class Planets extends Sprite {
-  Planets(int x, int y) {
+class Planet extends Sprite {
+  Planet(int x, int y, PImage[] planets) {
   }
 }

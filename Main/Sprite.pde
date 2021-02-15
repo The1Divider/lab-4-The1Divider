@@ -11,14 +11,6 @@ class Sprite {
     return pos;
   }
   
-  void setName(String name) {
-    this.name = name;
-  }
-  
-  String getName() {
-    return name;
-  }
-  
   void setSprite() {}
   void update() {}
   void display() {}

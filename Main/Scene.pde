@@ -1,25 +1,33 @@
 class Scene {
-  Sprite[] sprites;
+  Star[] stars;
+  Planet[] planets;
   int currentIndex, spriteCount;
   
-  Scene(int spriteCount) {
-    sprites = new Sprite[spriteCount];
+  Scene(PImage[] planetChoices, int starCount, int planetCount) {
+    stars = new Star[starCount];
+    
+    for (int i = 0; i > starCount; i++) {
+      Star star = new Star();
+      star.display();
+      stars[i] = star;
+    }
+    
+    planets = new Planet[planetCount];
     currentIndex = 0;
   }
   
-  void add(Sprite sprite) {
-    if (currentIndex + 1 > spriteCount) {
-      System.out.printf("Tried to add %s to scene but ran out of indices", sprite.name);
-    } else {
-    sprites[currentIndex] = sprite;
+  void update() {
+    for (Star star : stars) {
+      star.update(1);
+
     }
   }
   
-  void update(int length) {
-    for (Sprite sprite : sprites) {
-      if (sprite.pos.y > length) {
-        sprite.restart();
-      }
+  void display() {
+    System.out.println(stars[0]);
+    for (Star star : stars) {
+      System.out.println(star);
+      star.display();
     }
   }
 }

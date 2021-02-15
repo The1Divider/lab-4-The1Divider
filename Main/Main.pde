@@ -1,10 +1,21 @@
 boolean mouseControl;
 boolean selection = false;
 Spaceship spaceship;
+PImage planet1, planet2, planet3;
+Scene scene;
 
 void setup() {
   size(1000, 1000);
-  spaceship = new Spaceship("SpaceShip", width, height);
+  background(0);
+  
+  spaceship = new Spaceship(width/2, height/2);
+  
+  planet1 = loadImage("planet1.jpg");
+  planet2 = loadImage("planet2.jpg");
+  planet3 = loadImage("planet3.jpg");
+  
+  PImage[] planetChoices = {planet1, planet2, planet3};
+  scene = new Scene(planetChoices, 10, 3);
 }
 // Planets:
 // load 3-5 images + manipulate for 'different' planets
@@ -29,6 +40,9 @@ void draw() {
     controlSelection();
   } else {
     spaceship.display();
+    scene.display();
+    updateSpaceship();
+    scene.update();
   }
 }
 
@@ -61,5 +75,28 @@ void controlSelection() {
   } else if (mousePressed == true && inButton2XRange && inButton2YRange) {
     selection = true;
     mouseControl = false;
+  }
+}
+
+void updateSpaceship() {
+  if (mouseControl == true) {
+    spaceship.update(mouseX, mouseY, mouseControl);
+  } else if (keyPressed) {
+    System.out.println("Here");
+    int xDir = 0, yDir = 0;
+    // add collision
+    if (keyPressed && key == 'w') {
+      yDir = -5;
+    } 
+    if (keyPressed && key == 'a') {
+      xDir = -5;
+    } 
+    if (keyPressed && key == 's') {
+      yDir = 5;
+    } 
+    if (keyPressed && key == 'd') {
+      xDir = 5;
+    }
+    spaceship.update(xDir, yDir, mouseControl);
   }
 }
