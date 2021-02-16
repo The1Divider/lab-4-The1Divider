@@ -6,7 +6,7 @@ class Scene {
   Scene(PImage[] planetChoices, int starCount, int planetCount) {
     stars = new Star[starCount];
     
-    for (int i = 0; i > starCount; i++) {
+    for (int i = 0; i < starCount; i++) {
       Star star = new Star();
       star.display();
       stars[i] = star;
@@ -24,9 +24,7 @@ class Scene {
   }
   
   void display() {
-    System.out.println(stars[0]);
     for (Star star : stars) {
-      System.out.println(star);
       star.display();
     }
   }

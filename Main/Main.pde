@@ -10,9 +10,9 @@ void setup() {
   
   spaceship = new Spaceship(width/2, height/2);
   
-  planet1 = loadImage("planet1.jpg");
-  planet2 = loadImage("planet2.jpg");
-  planet3 = loadImage("planet3.jpg");
+  planet1 = loadImage("planet1.png");
+  planet2 = loadImage("planet2.png");
+  planet3 = loadImage("planet3.png");
   
   PImage[] planetChoices = {planet1, planet2, planet3};
   scene = new Scene(planetChoices, 10, 3);

@@ -17,23 +17,27 @@ class Star extends Sprite {
   }
   
   void setSprite() {
-    float x = pos.x;
-    float y = pos.y;
     
-    sprite = createShape();
-    sprite.beginShape();
+    PShape sprite = createShape(GROUP);
     
-    sprite.fill(255);
-    
-    sprite.vertex(x/2, y/2-50);
-    sprite.bezierVertex(x/2, y/2, x/2, y/2, x/2 + 50, y/2);
-    sprite.bezierVertex(x/2, y/2, x/2, y/2, x/2, y/2+50);
-    sprite.bezierVertex(x/2, y/2, x/2, y/2, x/2 - 50, y/2);
-    sprite.bezierVertex(x/2, y/2, x/2, y/2, x/2, y/2-50);
-    
-    if (pulse) {sprite.scale(1.2);};
-    
-    sprite.endShape();
+    for (int i = 0; i < 12; i++) {
+      PShape star = createShape();
+      
+      pushMatrix();
+      
+      star.beginShape();
+      
+      star.fill(255);
+      star.vertex(0, 0);
+      star.vertex(1, 0);
+      star.endShape();
+      
+      rotate(2 * PI * (i/12));
+      
+      popMatrix();
+      
+      sprite.addChild(star);
+    }
   }
   
   void display() {
