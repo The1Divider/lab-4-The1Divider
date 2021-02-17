@@ -7,6 +7,7 @@ class Scene {
     stars = new Star[starCount];
     
     for (int i = 0; i < starCount; i++) {
+
       Star star = new Star();
       star.display();
       stars[i] = star;
@@ -18,7 +19,7 @@ class Scene {
   
   void update() {
     for (Star star : stars) {
-      star.update(1);
+      star.update(5);
 
     }
   }

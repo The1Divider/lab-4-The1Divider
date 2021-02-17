@@ -8,6 +8,7 @@ void setup() {
   size(1000, 1000);
   background(0);
   
+  
   spaceship = new Spaceship(width/2, height/2);
   
   planet1 = loadImage("planet1.png");
@@ -15,7 +16,7 @@ void setup() {
   planet3 = loadImage("planet3.png");
   
   PImage[] planetChoices = {planet1, planet2, planet3};
-  scene = new Scene(planetChoices, 10, 3);
+  scene = new Scene(planetChoices, 20, 3);
 }
 // Planets:
 // load 3-5 images + manipulate for 'different' planets
@@ -25,13 +26,13 @@ void setup() {
 // gen method should use a rng method to keep clean
 
 // Spaceship:
-// give option to control with WASD or mouse (???)
+// give option to control with WASD or mouse -> WASD control is super janky
 // left click fires text "pew" at a interval
 // right click fires text "pew" per tick
 
 // Stars: (???)
-// 4 bezierVertex curves
-// scale up and down to give 'shining' affect
+// ~~4 bezierVertex curves~~ now just using fucking lines cause gl is hard
+// ~~scale up and down to give 'shining' affect~~ looks dumb give up
 
 void draw() {
   background(0);
@@ -39,6 +40,7 @@ void draw() {
   if (!selection) {
     controlSelection();
   } else {
+    noCursor();
     spaceship.display();
     scene.display();
     updateSpaceship();

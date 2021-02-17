@@ -37,12 +37,15 @@ class Spaceship extends Sprite {
     PVector rightWingTopPoint = new PVector(x + body.x, y - body.y);
     PVector rightWingBottomPoint = new PVector(x + body.x, y);
     PVector rightWingTip = new PVector( rightWingTopPoint.x+40, rightWingBottomPoint.y+20);
+    
    
     sprite = createShape(GROUP);
-    
+
+    pushMatrix();
     PShape wings = createShape();
     wings.beginShape();
-    
+    wings.fill(124, 124, 124);
+    wings.strokeWeight(10);
     // left wing
     wings.vertex(leftWingTopPoint.x, leftWingTopPoint.y);
     wings.bezierVertex(leftWingTopPoint.x-5, leftWingTopPoint.y+5, leftWingTip.x-2, leftWingTip.y-5, leftWingTip.x, leftWingTip.y);
@@ -54,10 +57,13 @@ class Spaceship extends Sprite {
     wings.bezierVertex(rightWingTip.x - 2, rightWingTip.y-5, rightWingBottomPoint.x+5, rightWingBottomPoint.y-5, rightWingBottomPoint.x, rightWingBottomPoint.y);
     
     wings.endShape(CLOSE);
+    popMatrix();
     
-    
+    pushMatrix();
     PShape shipBody = createShape();
     shipBody.beginShape();
+    shipBody.fill(0);
+    shipBody.strokeWeight(10);
     
     shipBody.vertex(x-body.x, y-body.y); // top left
     shipBody.vertex(x+body.x, y-body.y); // top right
@@ -65,33 +71,39 @@ class Spaceship extends Sprite {
     shipBody.vertex(x-body.x, y+body.y); // bottom left
     
     shipBody.endShape(CLOSE);
-    
-    
+    popMatrix();
+    pushMatrix();
     PShape cone = createShape();
     cone.beginShape();
-    
+    cone.fill(0);
+    cone.strokeWeight(10);
     cone.vertex(x-body.x, y-body.y); // top left
     cone.bezierVertex(x-body.x-coneCurve.x, y-body.y-coneCurve.y, coneNose.x-coneCurve.x-4, coneNose.y+coneCurve.y+2, coneNose.x, coneNose.y);
     cone.bezierVertex(coneNose.x+coneCurve.x+4, coneNose.y+coneCurve.y+2, x+body.x+coneCurve.x, y-body.y-coneCurve.y, x+body.x, y-body.y);
     
     cone.endShape(CLOSE);
-    
+    popMatrix();
+    pushMatrix();
     PShape tail = createShape();
     tail.beginShape();
-    
+    tail.fill(0);
+    tail.strokeWeight(10);
     tail.vertex(x-10, y + body.y); // top left
     tail.vertex(x-10, y + body.y + 5); // bottom left
     tail.vertex(x+10, y + body.y + 5); // bottom right
     tail.vertex(x+10, y + body.y); // top right
-    
+    popMatrix();
     
     sprite.addChild(wings);
     sprite.addChild(shipBody);
     sprite.addChild(cone);
     sprite.addChild(tail);
+
   }
   
   void display() {
+    
     shape(sprite);
+    
   }
 }
