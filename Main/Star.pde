@@ -3,17 +3,11 @@ class Star extends Sprite {
   PShape sprite;
   
   Star() {
-    int x = (int) random(1, 20) * 50;
-    int y = (int) random(-1000, 0);
+    int x = (int) random(width);
+    int y = (int) random(-height, 0);
     setPos(x, y);
     setSprite();
 
-  }
-  
-  void update(int y) {
-    pos.y += y;
-    if (pos.y > height+50) {restart();}
-    setSprite();
   }
   
   void setSprite() {
@@ -36,8 +30,9 @@ class Star extends Sprite {
   }
   
   void restart() {
-    int x = (int) random(1, 20) * 50;
-    setPos(x, 0);
-    setSprite();
+    int x = (int) random(width);
+    int y = (int) random(-height, 0);
+    setPos(x, y);
+    
   }
 }
