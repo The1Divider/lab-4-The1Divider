@@ -43,9 +43,12 @@ class Spaceship extends Sprite {
 
     pushMatrix();
     PShape wings = createShape();
+    
     wings.beginShape();
+    
     wings.fill(124, 124, 124);
     wings.strokeWeight(10);
+    
     // left wing
     wings.vertex(leftWingTopPoint.x, leftWingTopPoint.y);
     wings.bezierVertex(leftWingTopPoint.x-5, leftWingTopPoint.y+5, leftWingTip.x-2, leftWingTip.y-5, leftWingTip.x, leftWingTip.y);
@@ -61,8 +64,10 @@ class Spaceship extends Sprite {
     
     pushMatrix();
     PShape shipBody = createShape();
+    
     shipBody.beginShape();
-    shipBody.fill(0);
+    
+    shipBody.fill(124, 124, 124);
     shipBody.strokeWeight(10);
     
     shipBody.vertex(x-body.x, y-body.y); // top left
@@ -72,10 +77,13 @@ class Spaceship extends Sprite {
     
     shipBody.endShape(CLOSE);
     popMatrix();
+    
     pushMatrix();
     PShape cone = createShape();
+    
     cone.beginShape();
-    cone.fill(0);
+    
+    cone.fill(124, 124, 124);
     cone.strokeWeight(10);
     cone.vertex(x-body.x, y-body.y); // top left
     cone.bezierVertex(x-body.x-coneCurve.x, y-body.y-coneCurve.y, coneNose.x-coneCurve.x-4, coneNose.y+coneCurve.y+2, coneNose.x, coneNose.y);
@@ -83,15 +91,22 @@ class Spaceship extends Sprite {
     
     cone.endShape(CLOSE);
     popMatrix();
+    
+    
     pushMatrix();
     PShape tail = createShape();
+    
     tail.beginShape();
-    tail.fill(0);
+    
+    tail.fill(124, 124, 124);
     tail.strokeWeight(10);
+    
     tail.vertex(x-10, y + body.y); // top left
     tail.vertex(x-10, y + body.y + 5); // bottom left
     tail.vertex(x+10, y + body.y + 5); // bottom right
     tail.vertex(x+10, y + body.y); // top right
+    
+    tail.endShape(CLOSE);
     popMatrix();
     
     sprite.addChild(wings);
