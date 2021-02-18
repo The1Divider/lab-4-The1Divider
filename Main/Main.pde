@@ -16,7 +16,7 @@ void setup() {
   planet3 = loadImage("planet3.png");
   
   PImage[] planetChoices = {planet1, planet2, planet3};
-  scene = new Scene(planetChoices, 20, 3);
+  scene = new Scene(planetChoices, 22, 3);
 }
 // Planets:
 // load 3-5 images + manipulate for 'different' planets
@@ -41,10 +41,12 @@ void draw() {
     controlSelection();
   } else {
     noCursor();
-    spaceship.display();
     scene.display();
-    updateSpaceship();
+    
+    spaceship.display();
     scene.update();
+    updateSpaceship();
+    
   }
 }
 
