@@ -41,12 +41,11 @@ void draw() {
     controlSelection();
   } else {
     noCursor();
+    spaceship.display();
     scene.display();
     
-    spaceship.display();
-    scene.update();
     updateSpaceship();
-    
+    scene.update();
   }
 }
 
